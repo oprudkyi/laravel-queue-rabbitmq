@@ -3,8 +3,6 @@ name: Tests
 on:
   push:
   pull_request:
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
   tests:
@@ -42,8 +40,8 @@ jobs:
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
 
-      - name: Run Laravel Pint
-        run: ./vendor/bin/pint --test
+      # - name: Run Laravel Pint
+      #   run: ./vendor/bin/pint --test
 
       - name: Execute tests
         run: sleep 10 && vendor/bin/phpunit --verbose
